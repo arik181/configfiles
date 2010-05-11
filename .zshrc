@@ -31,8 +31,6 @@ alias s='clear;cd ~/code;ls -la --color=auto'
 alias S='clear;cd ~/bin;ls -la --color=auto'
 alias t='clear;cd ~/tmp;ls -la --color=auto'
 alias code='clear;cd ~/code;ls -la --color=auto'
-#D is set in .zshlocal
-alias d="clear;cd $D;ls -lahU --color=auto"
 
 
 # ssh/hosts
