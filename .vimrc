@@ -27,27 +27,31 @@ set <F6>=[17~
 set <F7>=[18~
 set <F8>=[19~
 set <F9>=[20~
+set <S-F9>=[33~
 set <F10>=[21~
+set <S-F10>=[34~
 set <F11>=[23~
 set <F12>=[24~
 
 " Programming
 
-" blocks
+    " blocks
 map <F9> <ESC>o{<CR>}<ESC>ko
 map <S-F9> <ESC>cl<CR>{<CR>}<ESC>k
-" for()
+
+    " for()
 map <F10> oint i = 0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
-" if()
+
+    " if()
 map <S-F10> oif()<CR>{<CR>}<ESC>kkllli
 
-" comments
+    " comments
 map <F11> 0i// <ESC> <CR>
 map <S-F11> 03x<CR>
 map <F12> o/***  ***/<ESC>5ha
 map <S-F12> o/*** YOU ARE HERE ***/<ESC>
 
-" Search
+    " Search
 map <C-f> :vim  *.c *.hODODODODODODODOD
 
 " Tabs
