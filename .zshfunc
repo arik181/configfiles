@@ -5,4 +5,5 @@ function pushconf()
     cd ~/configfiles
     git commit -a
     git push
+    cd $OLDPWD
 }
