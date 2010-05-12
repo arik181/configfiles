@@ -36,20 +36,19 @@ set <F12>=[24~
 " Programming
 
     " blocks
-map <F9> <ESC>o{<CR>}<ESC>ko
-map <S-F9> <ESC>cl<CR>{<CR>}<ESC>k
+map <F11> <ESC>o{<CR>}<ESC>ko<TAB>
+"map <F11> <ESC>cl<CR>{<CR>}<ESC>k
 
     " for()
-map <F10> oint i = 0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
+map <F9> oint i = 0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
 
     " if()
-map <S-F10> oif()<CR>{<CR>}<ESC>kkllli
+map <S-F9> oif()<CR>{<CR>}<ESC>kkllli
 
     " comments
-map <F11> 0i// <ESC> <CR>
-map <S-F11> 03x<CR>
+map <F10> 0i// <ESC> <CR>
+map <S-F10> 03x<CR>
 map <F12> o/***  ***/<ESC>5ha
-map <S-F12> o/*** YOU ARE HERE ***/<ESC>
 
     " Search
 map <C-f> :vim  *.c *.hODODODODODODODOD

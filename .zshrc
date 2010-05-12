@@ -49,3 +49,4 @@ alias x='exit'
 
 source ~/.zshsensitive
 source ~/.zshlocal
+source ~/.zshfunc

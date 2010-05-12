@@ -1,0 +1,8 @@
+#zshrc functions included from .zshrc
+
+function pushconf()
+{
+    cd ~/configfiles
+    git commit -a
+    git push
+}
