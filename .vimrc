@@ -31,18 +31,17 @@ set <F10>=[21~
 set <F11>=[23~
 set <F12>=[24~
 
-map <F1> :r !/home/arik181/bin/line 
-map <F2> :ls<CR>:b 
-map <F4> :vsplit<CR>:b2<CR>:wincmd w<CR>
+" Programming
 
-map <F5> oif()<CR>{<CR>}<ESC>kkllli
-map <F6> oint i = 0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
-map <F8> <ESC>o{<CR>}<ESC>ko
-map <S-F8> <ESC>cl<CR>{<CR>}<ESC>k
+" blocks
+map <F9> <ESC>o{<CR>}<ESC>ko
+map <S-F9> <ESC>cl<CR>{<CR>}<ESC>k
+" for()
+map <F10> oint i = 0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
+" if()
+map <S-F10> oif()<CR>{<CR>}<ESC>kkllli
 
-map <F9> :setlocal spell spelllang=en_us<CR>
-map <F10> :e ~/todo/goals<CR>:vs ~/todo/schedule<CR>
-
+" comments
 map <F11> 0i// <ESC> <CR>
 map <S-F11> 03x<CR>
 map <F12> o/***  ***/<ESC>5ha
