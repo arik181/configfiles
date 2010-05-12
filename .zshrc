@@ -26,6 +26,7 @@ alias :zh='vi ~/.histfile'
 # cd/ls
 alias ls='clear;ls --color=auto'
 alias lsa='clear;ls -lAU --color=auto'
+alias las='clear;ls -lAU --color=auto'
 alias a='clear;cd ~;ls -la --color=auto'
 alias s='clear;cd ~/code;ls -la --color=auto'
 alias S='clear;cd ~/bin;ls -la --color=auto'
