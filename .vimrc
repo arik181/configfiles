@@ -46,8 +46,8 @@ map <F9> oint i = 0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
 map <S-F9> oif()<CR>{<CR>}<ESC>kkllli
 
     " comments
-map <F10> 0i// <ESC> <CR>
-map <S-F10> 03x<CR>
+map <F10> 0r/lr/<CR>
+map <S-F10> 0r lr <CR>
 map <F12> o/***  ***/<ESC>5ha
 
     " Search
