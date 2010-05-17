@@ -6,4 +6,8 @@ function pushconf()
     git commit -a
     git push
     cd $OLDPWD
+    cd ~/sensitive
+    git commit -a 
+    git push
+    cd $OLDPWD
 }
