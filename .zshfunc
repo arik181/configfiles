@@ -11,3 +11,14 @@ function pushconf()
     git push
     cd $OLDPWD
 }
+
+function updateconf()
+{
+    cd ~/configfiles
+    git pull origin master
+    cd $OLDPWD
+    cd ~/sensitive
+    git pull origin master
+    cd $OLDPWD
+}
+
