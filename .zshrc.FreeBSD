@@ -16,12 +16,12 @@ stty erase '^H'
 # Edit
 # Additional editing commands can be found as 
 # shell scripts in ~/bin
-alias :z='vi ~/.zshrc && source ~/.zshrc'
-alias :b='vi ~/.bashrc && source ~/.bashrc'
-alias :i='vi ~/.inputrc'
-alias :v='vi ~/.vimrc'
-alias :M='vi ./Makefile'
-alias :zh='vi ~/.histfile' 
+alias :z='vim ~/.zshrc && source ~/.zshrc'
+alias :b='vim ~/.bashrc && source ~/.bashrc'
+alias :i='vim ~/.inputrc'
+alias :v='vim ~/.vimrc'
+alias :M='vim ./Makefile'
+alias :zh='vim ~/.histfile' 
 
 # cd/ls
 alias ls='clear;ls'
