@@ -50,8 +50,13 @@ map <F10> 0r/lr/<CR>
 map <S-F10> 0r lr <CR>
 map <F12> o/***  ***/<ESC>5ha
 
-    " Search
-map <C-f> :vim  *.c *.hODODODODODODODOD
+    " moving lines up and down
+    nnoremap <A-j> :m+<CR>==
+    nnoremap <A-k> :m-2<CR>==
+    inoremap <A-j> <Esc>:m+<CR>==gi
+    inoremap <A-k> <Esc>:m-2<CR>==gi
+    vnoremap <A-j> :m'>+<CR>gv=gv
+    vnoremap <A-k> :m-2<CR>gv=gv
 
 " Tabs
 map <C-PageDown> :tabn<CR>

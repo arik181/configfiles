@@ -17,6 +17,7 @@ stty erase '^H'
 # Additional editing commands can be found as 
 # shell scripts in ~/bin
 alias :z='vi ~/.zshrc && source ~/.zshrc'
+alias :zs='vi ~/.zshsensitive && source ~/.zshrc'
 alias :b='vi ~/.bashrc && source ~/.bashrc'
 alias :i='vi ~/.inputrc'
 alias :v='vi ~/.vimrc'
@@ -45,6 +46,7 @@ alias scr='screen -raAd'
 alias xr1='xrandr --output DVI-0 --mode 640x480'
 alias xr2='xrandr --output DVI-0 --mode 1680x1050'
 
+alias starcraft='~simel/starcraft/launcher'
 alias x='exit'
 
 source ~/.zshsensitive
