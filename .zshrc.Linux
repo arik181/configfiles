@@ -47,6 +47,6 @@ alias xr2='xrandr --output DVI-0 --mode 1680x1050'
 
 alias x='exit'
 
-source ~/.zshsensitive
-source ~/.zshlocal
-source ~/.zshfunc
+source ~/sensitive/.zshsensitive
+source ~/sensitive/.zshlocal
+source ~/sensitive/.zshfunc
