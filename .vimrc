@@ -11,10 +11,14 @@ set writebackup
 set spellfile=~/.vim/spell/.en.add
 set vb t_vb=
 
-:if &term == "screen" || &term == "xterm"
-:  set t_kb=
-:  fixdel
-:endif
+let osys=system('uname -s')
+if osys == "FreeBSD"
+  set t_kb=
+  fixdel
+elseif osys == "Linux"
+  set t_kb=
+  fixdel
+endif
 
 " These are needed because for some reason which I cannot
 " determine, this system uses non-standard F-Key bindings.
@@ -34,29 +38,24 @@ set <F11>=[23~
 set <F12>=[24~
 
 " Programming
-
     " blocks
-map <F11> <ESC>o{<CR>}<ESC>ko<TAB>
-"map <F11> <ESC>cl<CR>{<CR>}<ESC>k
+map <F9> <ESC>o{<CR>}<ESC>ko
+map <S-F9> <ESC>cl<CR>{<CR>}<ESC>k
 
     " for()
-map <F9> oint i = 0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
+map <F10> oint i=0;<CR>for(i=0;i<n;++i)<CR>{<CR>}<ESC>ko<TAB>
 
     " if()
-map <S-F9> oif()<CR>{<CR>}<ESC>kkllli
+map <S-F10> oif()<CR>{<CR>}<ESC>kkllli
 
     " comments
-map <F10> 0r/lr/<CR>
-map <S-F10> 0r lr <CR>
+map <F11> 0i// <ESC> <CR>
+map <S-F11> 03x<CR>
 map <F12> o/***  ***/<ESC>5ha
+map <S-F12> o/*** YOU ARE HERE ***/<ESC>
 
-    " moving lines up and down
-    nnoremap <A-j> :m+<CR>==
-    nnoremap <A-k> :m-2<CR>==
-    inoremap <A-j> <Esc>:m+<CR>==gi
-    inoremap <A-k> <Esc>:m-2<CR>==gi
-    vnoremap <A-j> :m'>+<CR>gv=gv
-    vnoremap <A-k> :m-2<CR>gv=gv
+    " Search
+map <C-f> :vim  *.c *.hODODODODODODODOD
 
 " Tabs
 map <C-PageDown> :tabn<CR>
