@@ -41,7 +41,7 @@ alias code='clear;cd ~/code;ls -la'
 alias du='du -h'
 alias df='df -h'
 alias date='date +%H:%M:%S\ -\ %d\ %b\ %y'
-alias scr='screen -raAd'
+alias scr='tmux attach' 
 alias xr1='xrandr --output DVI-0 --mode 640x480'
 alias xr2='xrandr --output DVI-0 --mode 1680x1050'
 
