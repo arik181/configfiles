@@ -10,7 +10,7 @@ bindkey -v '^b' backward-word
 bindkey -v '^k' kill-whole-line
 bindkey -v '^e' end-of-line
 
-#MAIL and PATH are set in .zshlocal
+#MAIL, PATH and erase key are set in .zshlocal
 
 # Edit
 # Additional editing commands can be found as 
