@@ -11,14 +11,16 @@ set writebackup
 set spellfile=~/.vim/spell/.en.add
 set vb t_vb=
 
-"let osys=system('uname -s')
-"if osys == "FreeBSD"
-"  set t_kb=
-"  fixdel
-"elseif osys == "Linux"
+" Make sure that there is a corresponding 'stty erase ^?'
+" in the .zshlocal file
+let osys=system('uname -s')
+if osys == "FreeBSD"
+  set t_kb=
+  fixdel
+elseif osys == "Linux"
   set t_kb=
   fixdel
-"endif
+endif
 
 " These are needed because for some reason which I cannot
 " determine, this system uses non-standard F-Key bindings.
@@ -64,7 +66,7 @@ map <PageDown> :tabn<CR>
 map <PageUp> :tabp<CR>
 map <C-j> :wincmd w<CR>
 map <C-k> :wincmd W<CR>
-map <C-x> 0rx
+map <C-x> 0rx<CR>
 
 " LatexSuite options 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
