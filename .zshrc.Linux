@@ -22,7 +22,7 @@ alias :i='vi ~/.inputrc'
 alias :v='vi ~/.vimrc'
 alias :M='vi ./Makefile'
 alias :zh='vi ~/.histfile' 
-alias :zl='vi ~/.zshlocal' 
+alias :zl='vi ~/.zshlocal && source ~/.zshlocal' 
 
 # cd/ls
 alias ls='clear;ls --color=auto'

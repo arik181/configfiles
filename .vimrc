@@ -12,13 +12,13 @@ set spellfile=~/.vim/spell/.en.add
 set vb t_vb=
 
 let osys=system('uname -s')
-"if osys == "FreeBSD"
+if osys == "FreeBSD"
   set t_kb=
   fixdel
-"elseif osys == "Linux"
-"  set t_kb=
-"  fixdel
-"endif
+elseif osys == "Linux"
+  set t_kb=
+  fixdel
+endif
 
 " These are needed because for some reason which I cannot
 " determine, this system uses non-standard F-Key bindings.
