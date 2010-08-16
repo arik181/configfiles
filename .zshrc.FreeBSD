@@ -9,7 +9,6 @@ bindkey -v '^r' history-incremental-search-backward
 bindkey -v '^b' backward-word
 bindkey -v '^k' kill-whole-line
 bindkey -v '^e' end-of-line
-stty erase '^H'
 
 #MAIL and PATH are set in .zshlocal
 
