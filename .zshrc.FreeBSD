@@ -9,9 +9,8 @@ bindkey -v '^r' history-incremental-search-backward
 bindkey -v '^b' backward-word
 bindkey -v '^k' kill-whole-line
 bindkey -v '^e' end-of-line
-stty erase '^H'
 
-#MAIL and PATH are set in .zshlocal
+#MAIL, PATH and erase key are set in .zshlocal
 
 # Edit
 # Additional editing commands can be found as 
@@ -41,7 +40,7 @@ alias code='clear;cd ~/code;ls -la'
 alias du='du -h'
 alias df='df -h'
 alias date='date +%H:%M:%S\ -\ %d\ %b\ %y'
-alias scr='screen -raAd'
+alias scr='tmux attach' 
 alias xr1='xrandr --output DVI-0 --mode 640x480'
 alias xr2='xrandr --output DVI-0 --mode 1680x1050'
 
