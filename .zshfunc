@@ -3,22 +3,21 @@
 #set -e
 #set -u
 
-CONFFILES="~/configfiles"
-SENSFILES="~/sensitive"
-CONFGIT="git@github.com:arik181/configfiles.git"
-SENSGIT="git@github.com:arik181/sensitive.git"
+CONFFILES=$HOME/configfiles
+SENSFILES=$HOME/sensitive
+CONFGIT=git@github.com:arik181/configfiles.git
+SENSGIT=git@github.com:arik181/sensitive.git
 
-ALLFILES="$HOME/.zshfunc
-$HOME/.zshrc
+ALLFILES="$HOME/.zshrc
 $HOME/.zshlocal
 $HOME/.zshsensitive
 $HOME/.vimrc
 $HOME/.xinitrc
 $HOME/.xmonad/xmonad.hs"
-
 WEAKFILES=".zshfunc 
 .vimrc 
 .xinitrc"
+FUNCFILE=$HOME/.zshfunc
 
 export ALLFILES
 export WEAKFILES
@@ -49,29 +48,33 @@ function updateconf()
 function setupconf()
 {
 
-    for file in `echo $ALLFILES`
-    do
-        if [ -e "$file" ]
-        then
-            echo "File $file exists. Aborting."
-            exit
-        else
-        fi
-    done
+#    for file in `echo $ALLFILES`
+#    do
+#        if [ -e "$file" ]
+#        then
+#            echo "File $file exists. Aborting."
+#            exit
+#        else
+#        fi
+#    done
 
-    #echo "Setting up directories..."
-    #if [ -x $CONFFILES]; then
-    #    mkdir $CONFFILES
-    #    cd $CONFFILES
-    #    git clone $CONFGIT
-    #fi
-#
-#    if [ -x $SENSFILES]; then
+#    echo "Setting up directories..."
+#    if [ ! -d $CONFFILES ]; then
+#        mkdir $CONFFILES
+#        cd $CONFFILES
+#        git clone $CONFGIT
+#    else
+#        echo "Directory $CONFFILES exists. Aborting."
+#    fi
+
+#    if [ ! -d $SENSFILES ]; then
 #        mkdir $SENSFILES
 #        cd $SENSFILES
 #        git clone $SENSGIT
+#    else
+#        echo "Directory $SENSFILES exists. Aborting."
 #    fi
-#
+
 #    echo "Linking files..."
 #    for file in $WEAKFILES; do
 #        ln ~/configfiles/$file ~/$file
