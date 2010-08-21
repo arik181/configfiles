@@ -67,12 +67,12 @@ function setupconf()
     if [ -x "~/sensitive/.zshlocal.(uname)" ]; then
         ln -s ~/sensitive/.zshlocal.(hostname) ~/.zshlocal
     else
-        echo "File does not exist: ~/sensitive/.zshlocal.`uname`"
+        echo "File does not exist: ~/sensitive/.zshlocal.`hostname`"
     fi
 
     if [ -x "~/sensitive/.zshsensitive.(hostname)" ]; then
         ln -s ~/sensitive/.zshsensitive.(hostname) ~/.zshsensitive
     else
-        echo "File does not exist: ~/sensitive/.zshsensitive.`uname`"
+        echo "File does not exist: ~/sensitive/.zshsensitive.`hostname`"
     fi
 }
