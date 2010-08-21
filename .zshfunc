@@ -34,7 +34,7 @@ function updateconf()
 function setupconf()
 {
     for file in $ALLFILES; do
-        if [ -x $file ]
+        if [ -x $file ]; then
             echo "File $file exists. Aborting."
             exit
         fi
@@ -58,23 +58,21 @@ function setupconf()
         ln -s ~/configfiles/$file ~/$file
     done
 
-    if [ -x "~/configfiles/.zshrc.(uname)" ]
+    if [ -x "~/configfiles/.zshrc.(uname)" ]; then
         ln -s ~/configfiles/.zshrc.(uname) ~/.zshrc
     else
         echo "File does not exist: ~/configfiles/.zshrc.`uname`"
     fi
 
-    if [ -x "~/sensitive/.zshlocal.(uname)" ]
+    if [ -x "~/sensitive/.zshlocal.(uname)" ]; then
         ln -s ~/sensitive/.zshlocal.(hostname) ~/.zshlocal
     else
         echo "File does not exist: ~/sensitive/.zshlocal.`uname`"
     fi
 
-    if [ -x "~/sensitive/.zshsensitive.(hostname)" ]
+    if [ -x "~/sensitive/.zshsensitive.(hostname)" ]; then
         ln -s ~/sensitive/.zshsensitive.(hostname) ~/.zshsensitive
     else
         echo "File does not exist: ~/sensitive/.zshsensitive.`uname`"
     fi
-
-
 }
