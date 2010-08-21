@@ -1,12 +1,27 @@
 #!/bin/bash
 #zshrc functions included from .zshrc
+#set -e
+#set -u
 
-export CONFFILES="~/configfiles"
-export SENSFILES="~/sensitive"
-export CONFGIT="git@github.com:arik181/configfiles.git"
-export SENSGIT="git@github.com:arik181/sensitive.git"
-export ALLFILES="~/.zshfunc ~/.zshrc ~/.zshlocal ~/.zshsensitive ~/.vimrc ~/.xinitrc ~/.xmonad/xmonad.hs"
-export WEAKFILES=".zshfunc .vimrc .xinitrc"
+CONFFILES="~/configfiles"
+SENSFILES="~/sensitive"
+CONFGIT="git@github.com:arik181/configfiles.git"
+SENSGIT="git@github.com:arik181/sensitive.git"
+
+ALLFILES="$HOME/.zshfunc
+$HOME/.zshrc
+$HOME/.zshlocal
+$HOME/.zshsensitive
+$HOME/.vimrc
+$HOME/.xinitrc
+$HOME/.xmonad/xmonad.hs"
+
+WEAKFILES=".zshfunc 
+.vimrc 
+.xinitrc"
+
+export ALLFILES
+export WEAKFILES
 
 
 function pushconf()
@@ -33,46 +48,50 @@ function updateconf()
 
 function setupconf()
 {
-    for file in $ALLFILES; do
-        if [ -x $file ]; then
+
+    for file in `echo $ALLFILES`
+    do
+        if [ -e "$file" ]
+        then
             echo "File $file exists. Aborting."
             exit
+        else
         fi
     done
 
-    echo "Setting up directories..."
-    if [ -x $CONFFILES]; then
-        mkdir $CONFFILES
-        cd $CONFFILES
-        git clone $CONFGIT
-    fi
+    #echo "Setting up directories..."
+    #if [ -x $CONFFILES]; then
+    #    mkdir $CONFFILES
+    #    cd $CONFFILES
+    #    git clone $CONFGIT
+    #fi
+#
+#    if [ -x $SENSFILES]; then
+#        mkdir $SENSFILES
+#        cd $SENSFILES
+#        git clone $SENSGIT
+#    fi
+#
+#    echo "Linking files..."
+#    for file in $WEAKFILES; do
+#        ln ~/configfiles/$file ~/$file
+#    done
+#
+#    if [ -x "~/configfiles/.zshrc.(uname)" ]; then
+#        ln ~/configfiles/.zshrc.(uname) ~/.zshrc
+#    else
+#        echo "File does not exist: ~/configfiles/.zshrc.`uname`"
+#    fi
+#
+#    if [ -x "~/sensitive/.zshlocal.(uname)" ]; then
+#        ln ~/sensitive/.zshlocal.(hostname) ~/.zshlocal
+#    else
+#        echo "File does not exist: ~/sensitive/.zshlocal.`hostname`"
+#    fi
 
-    if [ -x $SENSFILES]; then
-        mkdir $SENSFILES
-        cd $SENSFILES
-        git clone $SENSGIT
-    fi
-
-    echo "Linking files..."
-    for file in $WEAKFILES; do
-        ln -s ~/configfiles/$file ~/$file
-    done
-
-    if [ -x "~/configfiles/.zshrc.(uname)" ]; then
-        ln -s ~/configfiles/.zshrc.(uname) ~/.zshrc
-    else
-        echo "File does not exist: ~/configfiles/.zshrc.`uname`"
-    fi
-
-    if [ -x "~/sensitive/.zshlocal.(uname)" ]; then
-        ln -s ~/sensitive/.zshlocal.(hostname) ~/.zshlocal
-    else
-        echo "File does not exist: ~/sensitive/.zshlocal.`hostname`"
-    fi
-
-    if [ -x "~/sensitive/.zshsensitive.(hostname)" ]; then
-        ln -s ~/sensitive/.zshsensitive.(hostname) ~/.zshsensitive
-    else
-        echo "File does not exist: ~/sensitive/.zshsensitive.`hostname`"
-    fi
+#    if [ -x "~/sensitive/.zshsensitive.(hostname)" ]; then
+#        ln ~/sensitive/.zshsensitive.(hostname) ~/.zshsensitive
+#    else
+#        echo "File does not exist: ~/sensitive/.zshsensitive.`hostname`"
+#    fi
 }
