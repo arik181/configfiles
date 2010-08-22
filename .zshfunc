@@ -25,7 +25,7 @@ XMOFILE=$HOME/.xmonad/xmonad.hs
 export ALLFILES
 export WEAKFILES
 
-
+# Push any changes to configuration files 
 function pushconf()
 {
     cd $CONFFILES
@@ -38,6 +38,7 @@ function pushconf()
     cd $OLDPWD
 }
 
+# Pull changes from config repo
 function updateconf()
 {
     cd $CONFFILES
@@ -48,6 +49,7 @@ function updateconf()
     cd $OLDPWD
 }
 
+# Pull a new system configuration from repo
 function setupconf()
 {
 
