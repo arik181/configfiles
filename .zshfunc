@@ -39,7 +39,7 @@ function pushconf()
 }
 
 # Pull changes from config repo
-function updateconf()
+function pullconf()
 {
     cd $CONFFILES
     git pull origin master
