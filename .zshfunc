@@ -49,6 +49,21 @@ function pullconf()
     cd $OLDPWD
 }
 
+function clearconf()
+{
+    rm -rf $HOME/sensitive
+    rm -rf $HOME/configfiles
+    rm -rf $HOME/.zshrc
+    rm -rf $HOME/.zshlocal
+    rm -rf $HOME/.zshsensitive
+    rm -rf $HOME/.zshsensitive
+    rm -rf $HOME/.xmonad/xmonad.hs 
+    rm -rf $HOME/.vimrc
+    rm -rf $HOME/.xinitrc
+}
+
+alias cleanconf=clearconf
+
 # Pull a new system configuration from repo
 function setupconf()
 {
