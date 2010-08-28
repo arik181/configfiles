@@ -97,12 +97,18 @@ function setupconf()
         ln $HOME/sensitive/.zshlocal.`hostname` $HOME/.zshlocal
     else
         echo "File does not exist: ~/sensitive/.zshlocal.`hostname`"
+        echo "Creating new file: ~/sensitive/.zshlocal.`hostname`"
+        cp $HOME/sensitive/.zshlocal.`uname` $HOME/sensitive/.zshlocal.`hostname`
+        ln $HOME/sensitive/.zshlocal.`hostname` $HOME/.zshlocal
     fi
 
     if [ -e $HOME/sensitive/.zshsensitive.`hostname` ]; then
         ln $HOME/sensitive/.zshsensitive.`hostname` $HOME/.zshsensitive
     else
         echo "File does not exist: ~/sensitive/.zshsensitive.`hostname`"
+        echo "Creating new file: ~/sensitive/.zshsensitive.`hostname`"
+        cp $HOME/sensitive/.zshsensitive.`uname` $HOME/sensitive/.zshsensitive.`hostname`
+        ln $HOME/sensitive/.zshsensitive.`hostname` $HOME/.zshsensitive
     fi
 
     if [ -e $HOME/configfiles/xmonad.hs ]; then
