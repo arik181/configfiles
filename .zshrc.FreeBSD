@@ -21,6 +21,7 @@ alias :i='vim ~/.inputrc'
 alias :v='vim ~/.vimrc'
 alias :M='vim ./Makefile'
 alias :zh='vim ~/.histfile' 
+alias :zl='vim ~/.zshlocal'
 
 # cd/ls
 alias ls='clear;ls'
