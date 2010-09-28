@@ -16,14 +16,15 @@ bindkey -v '^e' end-of-line
 # Additional editing commands can be found as 
 # shell scripts in ~/bin
 alias :z='vi ~/.zshrc && source ~/.zshrc'
+alias :zl='vi ~/.zshlocal && source ~/.zshlocal'
 alias :zs='vi ~/.zshsensitive && source ~/.zshrc'
+alias :zf='vi ~/.zshfunc && source ~/.zshfunc'
 alias :b='vi ~/.bashrc && source ~/.bashrc'
 alias :i='vi ~/.inputrc'
 alias :v='vi ~/.vimrc'
 alias :M='vi ./Makefile'
 alias :zh='vi ~/.histfile' 
 alias :zl='vi ~/.zshlocal && source ~/.zshlocal' 
-alias :zf='vi ~/.zshfunc && source ~/.zshfunc'
 
 # cd/ls
 alias ls='clear;ls --color=auto'
