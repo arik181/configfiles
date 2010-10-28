@@ -39,6 +39,7 @@ function pushconf()
 }
 
 # Pull changes from config repo
+alias updateconf=pullconf
 function pullconf()
 {
     cd $CONFFILES
@@ -49,6 +50,7 @@ function pullconf()
     cd $OLDPWD
 }
 
+alias cleanconf=clearconf
 function clearconf()
 {
     rm -rf $HOME/sensitive
@@ -62,7 +64,6 @@ function clearconf()
     rm -rf $HOME/.xinitrc
 }
 
-alias cleanconf=clearconf
 
 # Pull a new system configuration from repo
 function setupconf()
