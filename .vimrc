@@ -22,6 +22,17 @@ elseif osys == "Linux"
   fixdel
 endif
 
+" Fix colors in windows
+if has("terminfo")
+    let &t_Co=16
+    let &t_AB="\<Esc>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm"
+    let &t_AF="\<Esc>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm"
+else
+    let &t_Co=16
+    let &t_Sf="\<Esc>[3%dm"
+    let &t_Sb="\<Esc>[4%dm"
+endif
+
 " These are needed because for some reason which I cannot
 " determine, this system uses non-standard F-Key bindings.
 set <F1>=OP
@@ -40,6 +51,10 @@ set <F11>=[23~
 set <F12>=[24~
 
 " Programming
+    " line movement
+map <S-k> kddpk
+map <S-j> ddp
+
     " blocks
 map <F9> <ESC>o{<CR>}<ESC>ko
 map <S-F9> <ESC>cl<CR>{<CR>}<ESC>k
