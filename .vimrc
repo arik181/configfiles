@@ -1,7 +1,7 @@
 set nu
 syntax on
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 hi Search term=reverse ctermbg=0 ctermfg=5
@@ -11,8 +11,13 @@ set writebackup
 set spellfile=~/.vim/spell/.en.add
 set vb t_vb=
 
-" Make sure that there is a corresponding 'stty erase ^?'
-" in the .zshlocal file
+" Disable filetype-based indentation settings
+filetype indent off
+" Disable loading filetype-based general configuration
+filetype plugin off
+" These may be combined for brevity (disabling both)
+filetype plugin indent off
+
 let osys=system('uname -s')
 if osys == "FreeBSD"
   set t_kb=
@@ -23,14 +28,13 @@ elseif osys == "Linux"
 endif
 
 " Fix colors in windows
+set t_Co=8
 if has("terminfo")
-    let &t_Co=16
     let &t_AB="\<Esc>[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm"
     let &t_AF="\<Esc>[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm"
 else
-    let &t_Co=16
-    let &t_Sf="\<Esc>[3%dm"
-    let &t_Sb="\<Esc>[4%dm"
+    let &t_Sf="[38;5;%dm"
+    let &t_Sb="[48;5;%dm"
 endif
 
 " These are needed because for some reason which I cannot
@@ -83,20 +87,7 @@ map <C-j> :wincmd w<CR>
 map <C-k> :wincmd W<CR>
 map <C-x> 0rx<CR>
 
-" LatexSuite options 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+" Enables 8-bit color on 32-bit systems, which I prefer.
+colorscheme peachpuff
 
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
+set makeprg=$DART_SDK/bin/dart_analyzer\ --enable_type_checks\ %\ 2>&1\ \\\|\ sed\ 's/file://'

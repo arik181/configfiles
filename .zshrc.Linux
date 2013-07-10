@@ -15,7 +15,10 @@ bindkey -v '^e' end-of-line
 # Edit
 # Additional editing commands can be found as 
 # shell scripts in ~/bin
+alias vi='vim'
+#alias v='xloadimage -center -onroot -border black ~/images/vader2.jpg'
 alias :z='vi ~/.zshrc && source ~/.zshrc'
+alias :x='vi ~/.xmonad/xmonad.hs'
 alias :zl='vi ~/.zshlocal && source ~/.zshlocal'
 alias :zs='vi ~/.zshsensitive && source ~/.zshrc'
 alias :zf='vi ~/.zshfunc && source ~/.zshfunc'
@@ -44,13 +47,21 @@ alias code='clear;cd ~/code;ls -la --color=auto'
 alias du='du -h'
 alias df='df -h'
 alias date='date +%H:%M:%S\ -\ %d\ %b\ %y'
-alias scr='screen -raAd'
+alias scr='tmux attach'
 alias xr1='xrandr --output DVI-0 --mode 640x480'
 alias xr2='xrandr --output DVI-0 --mode 1680x1050'
+alias ips='nmap -v -sn 192.168.1.* | grep -B 1 up'
 
+alias q='cd /home/arik181 ; qemu-system-i386 -netdev user,id=usernet -device e1000,netdev=usernet -boot c -hda e1000_dev.img'
 alias starcraft='~simel/starcraft/launcher'
 alias x='exit'
 
 source ~/.zshsensitive
 source ~/.zshlocal
+source ~/.zshloki
+
 source ~/configfiles/.zshfunc
+
+export NODE_PATH="/lib/node_modules"
+export DART_FLAGS='--enable_type_checks --enable_asserts' chrome
+export DART_SDK=${HOME}/bin/dart/dart-sdk

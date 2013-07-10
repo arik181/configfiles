@@ -41,7 +41,7 @@ myModMask       = mod1Mask
 -- Set numlockMask = 0 if you don't have a numlock key, or want to treat
 -- numlock status separately.
 --
-myNumlockMask   = mod2Mask
+-- myNumlockMask   = mod2Mask
  
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
@@ -56,8 +56,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
  
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#333333"
-myFocusedBorderColor = "#999999"
+myNormalBorderColor  = "#aaaaaa"
+myFocusedBorderColor = "#000000"
  
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -65,14 +65,19 @@ myFocusedBorderColor = "#999999"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
  
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    -- [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm .|. shiftMask, xK_Return), spawn "xterm -bg black -fg darkgrey" )
  
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "exe=`${HOME}/bin/dmenu_path | ${HOME}/bin/dmenu -nb grey30 -nf grey60 -sb grey60 -sf black` && eval \"exec $exe\"")
+    , ((modm,               xK_p     ), spawn "exe=`/usr/bin/dmenu_run -nb grey30 -nf grey60 -sb grey60 -sf black` && eval \"exec $exe\"")
  
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
  
+    -- launch clock
+    , ((modm, xK_c ), spawn "exe=`oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
+    , ((modm, xK_x ), spawn "exe=`oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
+
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)
  
@@ -207,11 +212,13 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+myManageHook = composeAll . concat $
+    [ [className  =? "MPlayer"                                     --> doFloat]
+    , [className  =? "Gimp"                                        --> doFloat]
+    , [className  =? "Clock"                                      --> doFloat]
+    , [(className =? "Firefox" <&&> resource =? "Dialog")          --> doFloat]
+    , [resource   =? "desktop_window"                              --> doIgnore]
+    , [resource   =? "kdesktop"                                    --> doIgnore ]]
  
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -259,7 +266,7 @@ defaults = defaultConfig {
         focusFollowsMouse  = myFocusFollowsMouse,
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
-        numlockMask        = myNumlockMask,
+        --numlockMask        = myNumlockMask,
         workspaces         = myWorkspaces,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
