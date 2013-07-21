@@ -75,8 +75,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
  
     -- launch clock
-    , ((modm, xK_c ), spawn "exe=`oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
-    , ((modm, xK_x ), spawn "exe=`oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
+    , ((modm, xK_grave ), spawn "exe=`oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
+    , ((modm .|. shiftMask, xK_grave ), spawn "exe=`oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
 
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)

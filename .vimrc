@@ -3,6 +3,8 @@ syntax on
 set tabstop=2
 set shiftwidth=2
 set expandtab
+" For makefiles
+autocmd FileType make setlocal noexpandtab
 
 hi Search term=reverse ctermbg=0 ctermfg=5
 
@@ -89,5 +91,6 @@ map <C-x> 0rx<CR>
 
 " Enables 8-bit color on 32-bit systems, which I prefer.
 colorscheme peachpuff
+
 
 set makeprg=$DART_SDK/bin/dart_analyzer\ --enable_type_checks\ %\ 2>&1\ \\\|\ sed\ 's/file://'
