@@ -58,7 +58,6 @@ alias x='exit'
 
 source ~/.zshsensitive
 source ~/.zshlocal
-source ~/.zshloki
 
 source ~/configfiles/.zshfunc
 
