@@ -14,11 +14,11 @@ set spellfile=~/.vim/spell/.en.add
 set vb t_vb=
 
 " Disable filetype-based indentation settings
-filetype indent off
+filetype indent on
 " Disable loading filetype-based general configuration
-filetype plugin off
+filetype plugin on
 " These may be combined for brevity (disabling both)
-filetype plugin indent off
+filetype plugin indent on
 
 let osys=system('uname -s')
 if osys == "FreeBSD"
@@ -94,3 +94,6 @@ colorscheme peachpuff
 
 
 set makeprg=$DART_SDK/bin/dart_analyzer\ --enable_type_checks\ %\ 2>&1\ \\\|\ sed\ 's/file://'
+execute pathogen#infect()
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif

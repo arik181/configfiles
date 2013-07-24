@@ -64,3 +64,4 @@ source ~/configfiles/.zshfunc
 export NODE_PATH="/lib/node_modules"
 export DART_FLAGS='--enable_type_checks --enable_asserts' chrome
 export DART_SDK=${HOME}/bin/dart/dart-sdk
+export ADT_SDK=${HOME}/home/developer2/dev/adt-bundle-linux-x86_64-20130522
