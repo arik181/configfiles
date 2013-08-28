@@ -90,10 +90,17 @@ map <C-k> :wincmd W<CR>
 map <C-x> 0rx<CR>
 
 " Enables 8-bit color on 32-bit systems, which I prefer.
-colorscheme peachpuff
+"colorscheme peachpuff
+" Enables 32-bit color on 32-bit systems
+colorscheme elflord
 
 
 set makeprg=$DART_SDK/bin/dart_analyzer\ --enable_type_checks\ %\ 2>&1\ \\\|\ sed\ 's/file://'
 execute pathogen#infect()
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+cabbrev B <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'b' : 'B')<CR>
+cabbrev nerd<CR> NERDTree<CR>
+
+
