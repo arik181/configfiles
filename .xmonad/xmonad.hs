@@ -14,11 +14,24 @@ import qualified Data.Map        as M
 import XMonad.Layout.MultiToggle --allows fullscreen toggle, without Full layout
 import XMonad.Layout.MultiToggle.Instances
  
+---- Tools
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
 myTerminal      = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb"
+myRanger        = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb  -e ranger ~"
  
+myDmenu         = "/usr/bin/dmenu_run -nb grey30 -nf grey60 -sb grey60 -sf black"
+myBgpic         = "/home/arik181/bin/bgpic"
+
+whiteClock      = "oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10"
+blackClock      = "oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10"
+
+volumeUp5       = "amixer -c 1 set Master playback 5dB+"
+volumeUp10      = "amixer -c 1 set Master playback 10dB+"
+volumeDn5       = "amixer -c 1 set Master playback 5dB-"
+volumeDn10      = "amixer -c 1 set Master playback 10dB-"
+
 -- Width of the window border in pixels.
 --
 myBorderWidth   = 1
@@ -67,26 +80,27 @@ myFocusedBorderColor = "#000000"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
  
     -- launch a terminal
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm .|. shiftMask,   xK_Return  ), spawn myRanger )
+    , ((modm .|. controlMask, xK_Return  ), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "exe=`/usr/bin/dmenu_run -nb grey30 -nf grey60 -sb grey60 -sf black` && eval \"exec $exe\"")
+    , ((modm,               xK_p        ), spawn myDmenu )
 
     -- random bgpic
-    , ((mod4Mask,           xK_grave ), spawn "exe=`zsh /home/arik181/bin/bgpic` && eval \"exec $exe\"")
+    , ((mod4Mask,           xK_grave    ), spawn myBgpic )
 
     -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
+    , ((modm .|. shiftMask, xK_p        ), spawn "gmrun")
  
     -- launch clock
-    , ((modm, xK_grave ), spawn "exe=`oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
-    , ((modm .|. shiftMask, xK_grave ), spawn "exe=`oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
+    , ((modm, xK_grave ), spawn whiteClock )
+    , ((modm .|. shiftMask, xK_grave    ), spawn blackClock )
 
     -- volume controls
-    , ((modm,               xK_equal    ), spawn "exe=`amixer -c 1 set Master playback 5dB+`  && eval \"exec $exe\"")
-    , ((modm .|. shiftMask, xK_equal    ), spawn "exe=`amixer -c 1 set Master playback 10dB+` && eval \"exec $exe\"")
-    , ((modm,               xK_minus    ), spawn "exe=`amixer -c 1 set Master playback 5dB-`  && eval \"exec $exe\"")
-    , ((modm .|. shiftMask, xK_minus    ), spawn "exe=`amixer -c 1 set Master playback 10dB-` && eval \"exec $exe\"")
+    , ((modm,               xK_equal    ), spawn volumeUp5  )
+    , ((modm .|. shiftMask, xK_equal    ), spawn volumeUp10 )
+    , ((modm,               xK_minus    ), spawn volumeDn5  )
+    , ((modm .|. shiftMask, xK_minus    ), spawn volumeDn10 )
 
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -97,6 +111,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --  Reset the layouts on the current workspace to default
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
  
+    -- Fullscreen
+    , ((modm, xK_F11), sendMessage $ Toggle FULL)
+
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
  
