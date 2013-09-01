@@ -71,7 +71,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "exe=`/usr/bin/dmenu_run -nb grey30 -nf grey60 -sb grey60 -sf black` && eval \"exec $exe\"")
- 
+
+    -- random bgpic
+    , ((mod4Mask,           xK_grave ), spawn "exe=`zsh /home/arik181/bin/bgpic` && eval \"exec $exe\"")
+
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
  
