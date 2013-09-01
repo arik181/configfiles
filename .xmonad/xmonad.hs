@@ -82,6 +82,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_grave ), spawn "exe=`oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
     , ((modm .|. shiftMask, xK_grave ), spawn "exe=`oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10` && eval \"exec $exe\"")
 
+    -- volume controls
+    , ((modm,               xK_equal    ), spawn "exe=`amixer -c 1 set Master playback 5dB+`  && eval \"exec $exe\"")
+    , ((modm .|. shiftMask, xK_equal    ), spawn "exe=`amixer -c 1 set Master playback 10dB+` && eval \"exec $exe\"")
+    , ((modm,               xK_minus    ), spawn "exe=`amixer -c 1 set Master playback 5dB-`  && eval \"exec $exe\"")
+    , ((modm .|. shiftMask, xK_minus    ), spawn "exe=`amixer -c 1 set Master playback 10dB-` && eval \"exec $exe\"")
+
     -- close focused window 
     , ((modm .|. shiftMask, xK_c     ), kill)
  
