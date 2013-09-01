@@ -17,7 +17,7 @@ import XMonad.Layout.MultiToggle.Instances
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "xterm -bg black -fg darkgrey"
+myTerminal      = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb"
  
 -- Width of the window border in pixels.
 --
@@ -67,9 +67,8 @@ myFocusedBorderColor = "#000000"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
  
     -- launch a terminal
-    -- [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-    [ ((modm .|. shiftMask, xK_Return), spawn "xterm -bg black -fg darkgrey" )
- 
+    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+
     -- launch dmenu
     , ((modm,               xK_p     ), spawn "exe=`/usr/bin/dmenu_run -nb grey30 -nf grey60 -sb grey60 -sf black` && eval \"exec $exe\"")
  
