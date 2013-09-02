@@ -7,6 +7,8 @@
 -- Normally, you'd only override those defaults you care about.
 --
  
+{-# OPTIONS_GHC -fglasgow-exts #-} -- required for XMonad.Layout.MultiToggle
+
 import XMonad
 import System.Exit
 import qualified XMonad.StackSet as W
@@ -112,7 +114,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
  
     -- Fullscreen
-    , ((modm, xK_F11), sendMessage $ Toggle FULL)
+    , ((modm,               xK_f), sendMessage $ Toggle FULL)
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
@@ -210,7 +212,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = mkToggle (single FULL) (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
