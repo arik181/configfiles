@@ -114,7 +114,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
  
     -- Fullscreen
-    , ((modm,               xK_f), sendMessage $ Toggle FULL)
+    , ((modm,               xK_f     ), sendMessage $ Toggle FULL)
+    , ((modm ,              xK_F1    ), sendMessage $ Toggle FULL)
 
     -- Resize viewed windows to the correct size
     , ((modm,               xK_n     ), refresh)
