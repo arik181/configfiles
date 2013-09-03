@@ -1,7 +1,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-EDITOR=vim
+export EDITOR=vim
 setopt appendhistory autocd extendedglob 
 unsetopt beep nomatch notify
 bindkey -v
