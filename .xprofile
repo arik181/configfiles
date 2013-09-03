@@ -1,3 +1,3 @@
 xcompmgr -c &
 /home/arik181/bin/bgpic
-urxvt -bg rgba:1500/1000/3000/cccc -fg rgba:9999/cccc/eeee/aaaa -geometry 80x25+50+50 +sb &
+urxvt -bg rgba:1500/1000/3000/cccc -fg rgba:9999/cccc/eeee/aaaa +sb -e ranger &
