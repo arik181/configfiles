@@ -13,8 +13,14 @@ import XMonad
 import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
-import XMonad.Layout.MultiToggle --allows fullscreen toggle, without Full layout
+-- allows fullscreen toggle, without Full layout
+import XMonad.Layout.MultiToggle 
 import XMonad.Layout.MultiToggle.Instances
+-- Setup for proper java application handling 
+-- (IntelliJ and Android Studio)
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ICCCMFocus
+import XMonad.Hooks.SetWMName
  
 ---- Tools
 -- The preferred terminal program, which is used in a binding below and by
@@ -265,7 +271,10 @@ myFocusFollowsMouse = True
 --
 -- > logHook = dynamicLogDzen
 --
-myLogHook = return ()
+-- original
+-- myLogHook = return ()
+-- required for IntelliJ and Android Studio
+myLogHook = takeTopFocus
  
 ------------------------------------------------------------------------
 -- Startup hook
@@ -275,7 +284,9 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+-- myStartupHook = return ()
+-- required for IntelliJ and Android Studio
+myStartupHook = setWMName "LG3D"
  
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
