@@ -52,6 +52,7 @@ alias scr='tmux attach'
 alias xr1='xrandr --output DVI-0 --mode 640x480'
 alias xr2='xrandr --output DVI-0 --mode 1680x1050'
 alias ips='nmap -v -sn 192.168.1.* | grep -B 1 up'
+alias r='ranger'
 
 alias q='cd /home/arik181 ; qemu-system-i386 -netdev user,id=usernet -device e1000,netdev=usernet -boot c -hda e1000_dev.img'
 alias starcraft='~simel/starcraft/launcher'
@@ -66,3 +67,10 @@ export NODE_PATH="/lib/node_modules"
 export DART_FLAGS='--enable_type_checks --enable_asserts' chrome
 export DART_SDK=${HOME}/bin/dart/dart-sdk
 export ADT_SDK=${HOME}/home/developer2/dev/adt-bundle-linux-x86_64-20130522
+
+alias out='~/out | dzen2 -x 0 -w 1680 -h 20 -bg darkred -fg black -p 1 -ta l'
+
+
+## Ranger cd command.
+# Must be at end of file.
+#[ -n "$RANGERCD" ] && unset RANGERCD && rangercd
