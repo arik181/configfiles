@@ -1,6 +1,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+RANGER_LOAD_DEFAULT_RC='FALSE'
 export EDITOR=vim
 setopt appendhistory autocd extendedglob 
 unsetopt beep nomatch notify
