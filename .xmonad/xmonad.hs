@@ -30,7 +30,9 @@ myTerminal      = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/ee
 myRanger        = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb  -e ranger ~"
  
 myDmenu         = "/usr/bin/dmenu_run -nb darkblue -nf lightblue -sb blue -sf lightblue"
+myNotemenu      = "/home/arik181/bin/notemenu"
 myBgpic         = "/home/arik181/bin/bgpic"
+myCyclepic      = "/home/arik181/bin/cyclepic"
 
 whiteClock      = "oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10"
 blackClock      = "oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10"
@@ -95,7 +97,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p        ), spawn myDmenu )
 
     -- random bgpic
-    , ((mod4Mask,           xK_grave    ), spawn myBgpic )
+    , ((mod4Mask,               xK_grave    ), spawn myBgpic )
+    , ((mod4Mask .|. shiftMask, xK_grave    ), spawn myCyclepic )
 
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p        ), spawn "gmrun")
@@ -123,9 +126,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_f     ), sendMessage $ Toggle FULL)
     , ((modm ,              xK_F1    ), sendMessage $ Toggle FULL)
 
+    -- Search for notes
+    , ((modm,               xK_n     ), spawn myNotemenu)
+    
     -- Resize viewed windows to the correct size
-    , ((modm,               xK_n     ), refresh)
+    --, ((modm,               xK_n     ), refresh)
  
+    --
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
  
