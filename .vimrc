@@ -95,4 +95,7 @@ map <C-x> 0rx<CR>
 colorscheme elflord
 
 cabbrev B <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'b' : 'B')<CR>
-cabbrev nerd<CR> NERDTree<CR>
+map <C-n> :NERDTreeToggle<CR>
+
+execute pathogen#infect()
+
