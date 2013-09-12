@@ -36,8 +36,9 @@ alias ls='clear;ls --color=auto'
 alias lsa='clear;ls -lAU --color=auto'
 alias las='clear;ls -lAU --color=auto'
 alias a='clear;cd ~;ls -la --color=auto'
-alias s='clear;cd ~/code;ls -la --color=auto'
-alias S='clear;cd ~/bin;ls -la --color=auto'
+alias s='clear;cd ~/bin;ls -la --color=auto'
+alias d='clear;cd ~/code;ls -la --color=auto'
+alias f='clear;cd ~/notes;ls -la --color=auto'
 alias t='clear;cd ~/tmp;ls -la --color=auto'
 alias code='clear;cd ~/code;ls -la --color=auto'
 
@@ -59,11 +60,6 @@ alias q='cd /home/arik181 ; qemu-system-i386 -netdev user,id=usernet -device e10
 alias starcraft='~simel/starcraft/launcher'
 alias x='exit'
 
-source ~/.zshsensitive
-source ~/.zshlocal
-
-source ~/configfiles/.zshfunc
-
 export NODE_PATH="/lib/node_modules"
 export DART_FLAGS='--enable_type_checks --enable_asserts' chrome
 export DART_SDK=${HOME}/bin/dart/dart-sdk
@@ -76,3 +72,9 @@ alias out='~/out | dzen2 -x 0 -w 1680 -h 20 -bg darkred -fg black -p 1 -ta l'
 # Must be at end of file.
 #[ -n "$RANGERCD" ] && unset RANGERCD && rangercd
 alias bd=". bd -s"
+
+source ~/.zshsensitive
+source ~/.zshlocal
+
+source ~/configfiles/.zshfunc
+
