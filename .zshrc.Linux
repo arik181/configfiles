@@ -75,3 +75,4 @@ alias out='~/out | dzen2 -x 0 -w 1680 -h 20 -bg darkred -fg black -p 1 -ta l'
 ## Ranger cd command.
 # Must be at end of file.
 #[ -n "$RANGERCD" ] && unset RANGERCD && rangercd
+alias bd=". bd -s"
