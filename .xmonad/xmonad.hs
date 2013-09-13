@@ -30,18 +30,18 @@ myTerminal      = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/ee
 myRanger        = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb  -e ranger ~"
  
 myDmenu         = "/usr/bin/dmenu_run -nb darkblue -nf lightblue -sb blue -sf lightblue"
-myNotemenu      = "/home/arik181/bin/notemenu"
-myRMNotemenu    = "/home/arik181/bin/rmnotemenu"
-myBgpic         = "/home/arik181/bin/bgpic"
-myCyclepic      = "/home/arik181/bin/cyclepic"
+myNotemenu      = "${HOME}/bin/notemenu"
+myRMNotemenu    = "${HOME}/bin/rmnotemenu"
+myBgpic         = "${HOME}/bin/bgpic"
+myCyclepic      = "${HOME}/bin/cyclepic"
 
 whiteClock      = "oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10"
 blackClock      = "oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10"
 
-volumeUp5       = "amixer -c 1 set Master playback 5dB+"
-volumeUp10      = "amixer -c 1 set Master playback 10dB+"
-volumeDn5       = "amixer -c 1 set Master playback 5dB-"
-volumeDn10      = "amixer -c 1 set Master playback 10dB-"
+volumeUp5       = "amixer -c 0 set Master playback 5dB+"
+volumeUp10      = "amixer -c 0 set Master playback 10dB+"
+volumeDn5       = "amixer -c 0 set Master playback 5dB-"
+volumeDn10      = "amixer -c 0 set Master playback 10dB-"
 
 -- Width of the window border in pixels.
 --
