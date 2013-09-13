@@ -31,6 +31,7 @@ myRanger        = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/ee
  
 myDmenu         = "/usr/bin/dmenu_run -nb darkblue -nf lightblue -sb blue -sf lightblue"
 myNotemenu      = "/home/arik181/bin/notemenu"
+myRMNotemenu    = "/home/arik181/bin/rmnotemenu"
 myBgpic         = "/home/arik181/bin/bgpic"
 myCyclepic      = "/home/arik181/bin/cyclepic"
 
@@ -126,8 +127,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_f     ), sendMessage $ Toggle FULL)
     , ((modm ,              xK_F1    ), sendMessage $ Toggle FULL)
 
-    -- Search for notes
+    -- Search for and edit notes
     , ((modm,               xK_n     ), spawn myNotemenu)
+    -- Search for and remove notes
+    , ((modm,               xK_d     ), spawn myRMNotemenu)
     
     -- Resize viewed windows to the correct size
     --, ((modm,               xK_n     ), refresh)
