@@ -67,10 +67,8 @@ export ADT_SDK=${HOME}/home/developer2/dev/adt-bundle-linux-x86_64-20130522
 
 alias out='~/out | dzen2 -x 0 -w 1680 -h 20 -bg darkred -fg black -p 1 -ta l'
 
+[ -n "$RANGER_LEVEL" ] && PS1='(RANGER'"$RANGER_LEVEL"') : '
 
-## Ranger cd command.
-# Must be at end of file.
-#[ -n "$RANGERCD" ] && unset RANGERCD && rangercd
 alias bd=". bd -s"
 
 source ~/.zshsensitive
