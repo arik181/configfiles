@@ -42,24 +42,38 @@ endif
 " These are needed because for some reason which I cannot
 " determine, this system uses non-standard F-Key bindings.
 set <F1>=OP
+set <S-F1>=[23~
 set <F2>=OQ
+set <S-F2>=[24~
 set <F3>=OR
+set <S-F3>=[25~
 set <F4>=OS
+set <S-F4>=[26~
 set <F5>=[15~
+set <S-F5>=[28~
 set <F6>=[17~
+set <S-F6>=[29~
 set <F7>=[18~
+set <S-F7>=[31~
 set <F8>=[19~
+set <S-F8>=[32~
 set <F9>=[20~
 set <S-F9>=[33~
 set <F10>=[21~
 set <S-F10>=[34~
 set <F11>=[23~
+set <S-F11>=[23$
 set <F12>=[24~
+set <S-F12>=[24$
 
 " Programming
     " line movement
 map <S-k> kddpk
 map <S-j> ddp
+
+    " php
+map <F4> oecho "<pre>";print_r();echo "</pre>";die();<ESC>2F)i
+map <S-F4> o<?php echo "<pre>";print_r();echo "</pre>";die(); ?><ESC>2F)i
 
     " blocks
 map <F9> <ESC>o{<CR>}<ESC>ko
@@ -91,11 +105,24 @@ map <C-x> 0rx<CR>
 
 " Enables 8-bit color on 32-bit systems, which I prefer.
 "colorscheme peachpuff
-" Enables 32-bit color on 32-bit systems
+" Enables colorscheme for dark backgrounds
 colorscheme elflord
 
+" Very useful for me :)
 cabbrev B <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'b' : 'B')<CR>
+cabbrev W <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'w' : 'W')<CR>
+
 map <C-n> :NERDTreeToggle<CR>
 
-execute pathogen#infect()
+" Ranger related
+fun! RangerChooser()
+    exec "silent !ranger --choosefile=/tmp/chosenfile " . expand("%:p:h")
+    if filereadable('/tmp/chosenfile')
+        exec 'edit ' . system('cat /tmp/chosenfile')
+        call system('rm /tmp/chosenfile')
+    endif
+    redraw!
+endfun
+map ,r :call RangerChooser()<CR>
 
+execute pathogen#infect()
