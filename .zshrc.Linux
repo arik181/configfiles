@@ -76,5 +76,5 @@ alias bd=". bd -s"
 source ~/.zshsensitive
 source ~/.zshlocal
 
-source ~/configfiles/.zshfunc
+source ~/Git/configfiles/.zshfunc
 
