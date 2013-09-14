@@ -1,12 +1,20 @@
 #!/usr/bin/env sh
-ln    ~/Git/configfiles/.tmux.conf    ~/.tmux.conf
-ln    ~/Git/configfiles/.vimrc        ~/.vimrc
+rm -rf ~/.tmux.conf
+rm -rf ~/.vimrc
 rm -rf ~/.xmonad
-ln -s ~/Git/configfiles/.xmonad       ~/.xmonad
 rm -rf ~/.config/ranger
+rm -rf ~/.zshfunc
+rm -rf ~/.zshrc
+rm -rf ~/.xinitrc
+rm -rf ~/.xprofile
+rm -rf ~/.xsession
+
+ln -s ~/Git/configfiles/.tmux.conf    ~/.tmux.conf
+ln -s ~/Git/configfiles/.vimrc        ~/.vimrc
+ln -s ~/Git/configfiles/.xmonad       ~/.xmonad
 ln -s ~/Git/configfiles/ranger        ~/.config/ranger
-ln    ~/Git/configfiles/.zshfunc      ~/.zshfunc
-ln    ~/Git/configfiles/.zshrc.Linux  ~/.zshrc
-ln    ~/Git/configfiles/.xinitrc      ~/.xinitrc
-ln    ~/Git/configfiles/.xprofile     ~/.xprofile
-ln    ~/Git/configfiles/.xsession     ~/.xsession
+ln -s ~/Git/configfiles/.zshfunc      ~/.zshfunc
+ln -s ~/Git/configfiles/.zshrc.Linux  ~/.zshrc
+ln -s ~/Git/configfiles/.xinitrc      ~/.xinitrc
+ln -s ~/Git/configfiles/.xprofile     ~/.xprofile
+ln -s ~/Git/configfiles/.xsession     ~/.xsession
