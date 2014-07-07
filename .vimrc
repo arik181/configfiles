@@ -104,7 +104,7 @@ map <PageUp> :tabp<CR>
 map <C-j> :wincmd w<CR>
 map <C-k> :wincmd W<CR>
 map <C-x> 0rx<CR>
-map t :tab sp<CR>
+map <C-t> :tab sp<CR>
 
 
 " Enables 8-bit color on 32-bit systems, which I prefer.
