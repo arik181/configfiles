@@ -1,5 +1,6 @@
 set nu
 syntax on
+set hlsearch
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -48,6 +49,7 @@ set <S-F2>=[24~
 set <F3>=OR
 set <S-F3>=[25~
 set <F4>=OS
+"set <F4>=[14~
 set <S-F4>=[26~
 set <F5>=[15~
 set <S-F5>=[28~
@@ -102,17 +104,20 @@ map <PageUp> :tabp<CR>
 map <C-j> :wincmd w<CR>
 map <C-k> :wincmd W<CR>
 map <C-x> 0rx<CR>
+map t :tab sp<CR>
+
 
 " Enables 8-bit color on 32-bit systems, which I prefer.
 "colorscheme peachpuff
 " Enables colorscheme for dark backgrounds
-colorscheme elflord
+colorscheme desert
 
 " Very useful for me :)
 cabbrev B <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'b' : 'B')<CR>
 cabbrev W <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'w' : 'W')<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-b> :TlistToggle<CR>
 
 " Ranger related
 fun! RangerChooser()
