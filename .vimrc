@@ -119,15 +119,4 @@ cabbrev W <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'w' : 'W')<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :TlistToggle<CR>
 
-" Ranger related
-fun! RangerChooser()
-    exec "silent !ranger --choosefile=/tmp/chosenfile " . expand("%:p:h")
-    if filereadable('/tmp/chosenfile')
-        exec 'edit ' . system('cat /tmp/chosenfile')
-        call system('rm /tmp/chosenfile')
-    endif
-    redraw!
-endfun
-map ,r :call RangerChooser()<CR>
-
 execute pathogen#infect()
