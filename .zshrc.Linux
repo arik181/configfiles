@@ -42,6 +42,13 @@ alias s='clear;cd ~/bin;ls -la --color=auto'
 alias f='clear;cd ~/notes;ls -la --color=auto'
 alias code='clear;cd ~/code;ls -la --color=auto'
 
+alias ..='cd ..;ls -la --color=auto'
+alias ...='cd ../..;ls -la --color=auto'
+alias ....='cd ../../..;ls -la --color=auto'
+alias ......='cd ../../../..;ls -la --color=auto'
+alias .......='cd ../../../../..;ls -la --color=auto'
+alias ........='cd ../../../../../..;ls -la --color=auto'
+
 
 # ssh/hosts
 # Hosts are set in .zshsensitive
