@@ -106,13 +106,14 @@ map <C-x> 0rx<CR>
 " Enables 8-bit color on 32-bit systems, which I prefer.
 "colorscheme peachpuff
 " Enables colorscheme for dark backgrounds
-colorscheme elflord
+colorscheme darkblue
 
 " Very useful for me :)
 cabbrev B <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'b' : 'B')<CR>
 cabbrev W <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'w' : 'W')<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-b> :TlistToggle<CR>
 
 " Ranger related
 fun! RangerChooser()
