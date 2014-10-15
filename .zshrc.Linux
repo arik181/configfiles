@@ -3,6 +3,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 RANGER_LOAD_DEFAULT_RC='FALSE'
 export EDITOR=vim
+export GOROOT=/usr/bin
+export GOPATH=~/bin/golang
 setopt appendhistory autocd extendedglob 
 unsetopt beep nomatch notify
 bindkey -v
@@ -37,10 +39,7 @@ alias lsa='clear;ls -lAU --color=auto'
 alias las='clear;ls -lAU --color=auto'
 alias a='clear;cd ~;ls -la --color=auto'
 alias s='clear;cd ~/bin;ls -la --color=auto'
-alias d='clear;cd ~/code;ls -la --color=auto'
-alias D='clear;cd ~/Downloads;ls -la --color=auto'
 alias f='clear;cd ~/notes;ls -la --color=auto'
-alias t='clear;cd ~/tmp;ls -la --color=auto'
 alias code='clear;cd ~/code;ls -la --color=auto'
 
 
