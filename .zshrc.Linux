@@ -64,7 +64,7 @@ alias xr2='xrandr --output DVI-0 --mode 1680x1050'
 alias ips='nmap -v -sn 192.168.1.* | grep -B 1 up'
 alias r='ranger'
 
-alias q='cd /home/arik181 ; qemu-system-i386 -netdev user,id=usernet -device e1000,netdev=usernet -boot c -hda e1000_dev.img'
+#alias q='cd /home/arik181 ; qemu-system-i386 -netdev user,id=usernet -device e1000,netdev=usernet -boot c -hda e1000_dev.img'
 alias starcraft='~simel/starcraft/launcher'
 alias battle='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Battle.net/Battle.net.exe'
 alias wow='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/World\ of\ Warcraft/Wow.exe'
@@ -147,3 +147,18 @@ n
 . /usr/local/share/zsh/site-functions
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+qrpass()
+{
+    qrencode $(pass $1) -o ${HOME}/out.png && feh ${HOME}/out.png
+}
+
+p()
+{
+   pass -c $1
+}
+
+q()
+{
+    qrencode $1 -o ${HOME}/out.png && feh ${HOME}/out.png
+}

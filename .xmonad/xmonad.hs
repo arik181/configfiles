@@ -26,17 +26,26 @@ import XMonad.Hooks.SetWMName
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb"
+--myTerminal      = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb"
+myTerminal      = "gnome-terminal --hide-menubar"
 myRanger        = "urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb  -e ranger ~"
  
-myDmenu         = "/usr/bin/dmenu_run -nb darkblue -nf lightblue -sb blue -sf lightblue"
+--myDmenu         = "/usr/bin/dmenu_run -nb darkblue -nf lightblue -sb blue -sf lightblue"
+myDmenu         = "/usr/bin/dmenu_run"
+myChrome        = "/usr/bin/google-chrome"
+mySteam         = "/usr/games/steam"
+mySpotify       = "/snap/bin/spotify"
+myShadow        = "${HOME}/bin/shadow"
 myNotemenu      = "${HOME}/bin/notemenu"
 myRMNotemenu    = "${HOME}/bin/rmnotemenu"
 myBgpic         = "${HOME}/bin/bgpic"
 myCyclepic      = "${HOME}/bin/cyclepic"
 
-whiteClock      = "oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10"
-blackClock      = "oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10"
+amberclock      = "echo `date` | dzen2 -fg orange -p 10 -x 10 -y 10 -w 300"
+amberbattery    = "echo `cat /sys/class/power_supply/BAT0/capacity` | dbar | dzen2 -fg orange -p 10 -x 10 -y 40 -w 400"
+ambertemp       = "echo `cat /sys/class/thermal/thermal_zone0/temp` | dzen2 -fg orange -p 10 -x 10 -y 40 -w 400"
+whiteOClock      = "oclock -fg white -bg white -bd white -transparent -geometry 100x100+10+10"
+blackOClock      = "oclock -fg black -bg black -bd black -transparent -geometry 100x100+10+10"
 
 volumeUp5       = "amixer -c 0 set Master playback 5dB+"
 volumeUp10      = "amixer -c 0 set Master playback 10dB+"
@@ -78,7 +87,7 @@ myModMask       = mod1Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["code","2","3","4","music","6","7","web_aux","web"]
+myWorkspaces    = ["1code","2code","3steam","4","5music","6tmp","7","8web","9web"]
  
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -94,6 +103,18 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask,   xK_Return  ), spawn myRanger )
     , ((modm .|. controlMask, xK_Return  ), spawn $ XMonad.terminal conf )
 
+    -- launch a browser
+    , ((controlMask, xK_n  ), spawn $ myChrome )
+
+    -- launch steam
+    , ((controlMask, xK_m  ), spawn $ mySteam )
+
+    -- launch shadow
+    , ((controlMask, xK_slash  ), spawn $ myShadow )
+
+    -- launch spotify
+    , ((controlMask, xK_period ), spawn $ mySpotify )
+
     -- launch dmenu
     , ((modm,               xK_p        ), spawn myDmenu )
 
@@ -105,8 +126,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_p        ), spawn "gmrun")
  
     -- launch clock
-    , ((modm, xK_grave ), spawn whiteClock )
-    , ((modm .|. shiftMask, xK_grave    ), spawn blackClock )
+    , ((modm, xK_grave ), spawn amberclock )
+    , ((modm .|. shiftMask, xK_grave    ), spawn whiteOClock )
+
+    -- battery monitor
+    , ((modm, xK_Escape ), spawn amberbattery )
+    -- temp monitor
+    , ((modm .|. shiftMask, xK_Escape ), spawn ambertemp )
 
     -- volume controls
     , ((modm,               xK_equal    ), spawn volumeUp5  )
@@ -304,6 +330,7 @@ myStartupHook = setWMName "LG3D"
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = xmonad defaults
+--main = xmonad =<< xmobar defaults
  
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will 
