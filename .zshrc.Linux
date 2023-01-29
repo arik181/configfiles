@@ -2,7 +2,11 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 RANGER_LOAD_DEFAULT_RC='FALSE'
+
+export LANG=en_US.UTF-8
+export PASSWORD_STORE_DIR=~/.password-store
 export EDITOR=vim
+export NB_DATA_TOOL=sc-im
 export GOROOT=/usr/bin
 export GOPATH=~/bin/golang
 setopt appendhistory autocd extendedglob 
@@ -19,36 +23,32 @@ bindkey -v '^e' end-of-line
 # Additional editing commands can be found as 
 # shell scripts in ~/bin
 alias vi='vim'
+alias sc='sc-im'
 #alias v='xloadimage -center -onroot -border black ~/images/vader2.jpg'
-alias :z='vi ~/.zshrc && source ~/.zshrc'
-alias :x='vi ~/.xmonad/xmonad.hs'
-alias :t='vi ~/.tmux.conf'
-alias :zl='vi ~/.zshlocal && source ~/.zshlocal'
-alias :zs='vi ~/.zshsensitive && source ~/.zshrc'
-alias :zf='vi ~/.zshfunc && source ~/.zshfunc'
-alias :b='vi ~/.bashrc && source ~/.bashrc'
-alias :i='vi ~/.config/xplr/init.lua'
-alias :v='vi ~/.vimrc'
-alias :M='vi ./Makefile'
-alias :zh='vi ~/.histfile' 
-alias :zl='vi ~/.zshlocal && source ~/.zshlocal' 
+alias :z='vim ~/.zshrc && source ~/.zshrc'
+alias :x='vim ~/.xmonad/xmonad.hs'
+alias :t='vim ~/.tmux.conf'
+alias :zl='vim ~/.zshlocal && source ~/.zshlocal'
+alias :zs='vim ~/.zshsensitive && source ~/.zshrc'
+alias :zf='vim ~/.zshfunc && source ~/.zshfunc'
+alias :b='vim ~/.bashrc && source ~/.bashrc'
+alias :i='vim ~/.config/xplr/init.lua'
+alias :v='vim ~/.vimrc'
+alias :M='vim ./Makefile'
+alias :zh='vim ~/.histfile' 
+alias :zl='vim ~/.zshlocal && source ~/.zshlocal' 
+alias :h='vim /home/arik181/.config/hoard/trove.yml'
 
 # cd/ls
-alias ls='clear;ls --color=auto'
-alias lsa='clear;ls -lAU --color=auto'
+alias l='clear;exa'
+alias ls='clear;exa'
+alias lsa='clear;exa -la'
 alias las='clear;ls -lAU --color=auto'
 alias a='clear;cd ~;ls -la --color=auto'
 alias g='clear;cd ~/Git;ls -la --color=auto'
 alias s='clear;cd ~/bin;ls -la --color=auto'
 alias f='clear;cd ~/notes;ls -la --color=auto'
 alias code='clear;cd ~/code;ls -la --color=auto'
-
-alias ..='cd ..;ls -la --color=auto'
-alias ...='cd ../..;ls -la --color=auto'
-alias ....='cd ../../..;ls -la --color=auto'
-alias ......='cd ../../../..;ls -la --color=auto'
-alias .......='cd ../../../../..;ls -la --color=auto'
-alias ........='cd ../../../../../..;ls -la --color=auto'
 
 
 # ssh/hosts
@@ -57,10 +57,7 @@ alias ........='cd ../../../../../..;ls -la --color=auto'
 # overrides
 alias du='du -h'
 alias df='df -h'
-alias date='date +%H:%M:%S\ -\ %d\ %b\ %y'
 alias scr='tmux attach'
-alias xr1='xrandr --output DVI-0 --mode 640x480'
-alias xr2='xrandr --output DVI-0 --mode 1680x1050'
 alias ips='nmap -v -sn 192.168.1.* | grep -B 1 up'
 alias r='ranger'
 
@@ -138,10 +135,13 @@ nnn_cd()
 #trap nnn_cd EXIT
 
 export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-export NNN_PLUG='c:nnncd'
+export NNN_PLUG="c:nnncd;h:-!hoard --autocomplete list;d:dragdrop;k:tasks;n:!newsraft"
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_SSHFS='sshfs -o reconnect,idmap=user,cache_timeout=3600'
 export NNN_CLONE='rclone mount --read-only --no-checksum'
+export NNN_BMS='h:~;b:~/bin;g:~/Git;d:~/Downloads/;c:~/.config;o:~/Documents;j:~/Git/feedme;'
+export NNN_OPENER=nnnopen
+
 bindkey -s '^j' 'n^M'
 n
 . /usr/local/share/zsh/site-functions
@@ -162,3 +162,5 @@ q()
 {
     qrencode $1 -o ${HOME}/out.png && feh ${HOME}/out.png
 }
+
+source /home/arik181/.config/broot/launcher/bash/br

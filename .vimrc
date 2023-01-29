@@ -116,8 +116,9 @@ colorscheme desert
 cabbrev B <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'b' : 'B')<CR>
 cabbrev W <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'w' : 'W')<CR>
 
-map <C-n> :NERDTreeToggle<CR>
-map <C-b> :TlistToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
+"map <C-b> :TlistToggle<CR>
+map <C-o> :NnnExplore<CR>
 
 
 
@@ -140,10 +141,10 @@ call plug#begin()
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'junegunn/vim-emoji'
-Plug 'https://gitlab.com/gi1242/vim-emoji-ab.git'
+"Plug 'junegunn/vim-emoji'
+"Plug 'https://gitlab.com/gi1242/vim-emoji-ab.git'
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-default branch
