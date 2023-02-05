@@ -125,6 +125,11 @@ n()
     fi
 }
 
+v()
+{
+    vifm "$@"
+}
+
 nnn_cd()
 {
     if ! [ -z "$NNN_PIPE" ]; then
