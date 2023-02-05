@@ -47,7 +47,6 @@ alias las='clear;ls -lAU --color=auto'
 alias a='clear;cd ~;ls -la --color=auto'
 alias g='clear;cd ~/Git;ls -la --color=auto'
 alias s='clear;cd ~/bin;ls -la --color=auto'
-alias f='clear;cd ~/notes;ls -la --color=auto'
 alias code='clear;cd ~/code;ls -la --color=auto'
 
 
@@ -59,7 +58,6 @@ alias du='du -h'
 alias df='df -h'
 alias scr='tmux attach'
 alias ips='nmap -v -sn 192.168.1.* | grep -B 1 up'
-alias r='ranger'
 
 #alias q='cd /home/arik181 ; qemu-system-i386 -netdev user,id=usernet -device e1000,netdev=usernet -boot c -hda e1000_dev.img'
 alias starcraft='~simel/starcraft/launcher'
@@ -163,4 +161,14 @@ q()
     qrencode $1 -o ${HOME}/out.png && feh ${HOME}/out.png
 }
 
-source /home/arik181/.config/broot/launcher/bash/br
+r()
+{
+    zellij --session snownews -l n
+}
+
+arik181history()
+{
+    touch `date +%F`
+    echo $1 >> /home/arik181/Git/history/`date +%F`
+}
+eval "$(zoxide init zsh)"
