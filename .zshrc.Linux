@@ -24,6 +24,8 @@ bindkey -v '^e' end-of-line
 # shell scripts in ~/bin
 alias vi='vim'
 alias sc='sc-im'
+alias bat="upower -i `upower -e | grep 'BAT'`"
+alias battery="upower -i `upower -e | grep 'BAT'`"
 #alias v='xloadimage -center -onroot -border black ~/images/vader2.jpg'
 alias :z='vim ~/.zshrc && source ~/.zshrc'
 alias :x='vim ~/.xmonad/xmonad.hs'
@@ -145,8 +147,18 @@ export NNN_CLONE='rclone mount --read-only --no-checksum'
 export NNN_BMS='h:~;b:~/bin;g:~/Git;d:~/Downloads/;c:~/.config;o:~/Documents;j:~/Git/feedme;'
 export NNN_OPENER=nnnopen
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 bindkey -s '^j' 'n^M'
-n
+#n
+y
 . /usr/local/share/zsh/site-functions
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -168,7 +180,7 @@ q()
 
 r()
 {
-    zellij --session snownews -l n
+    zellij --session snownews -l news
 }
 
 arik181history()
@@ -177,3 +189,14 @@ arik181history()
     echo $1 >> /home/arik181/Git/history/`date +%F`
 }
 eval "$(zoxide init zsh)"
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if [[ -f ~/.yzsh-load.zsh && -d ~/.yzsh ]]; then
+  source ~/.yzsh-load.zsh && yzsh_main
+fi
+
+export PATH="${HOME}/.root/usr/bin:${HOME}/.root/usr/bin:${PATH}"
+
